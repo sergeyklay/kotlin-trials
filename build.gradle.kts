@@ -1,5 +1,5 @@
 val kotlinJvmTarget = "1.8"
-val jmhCoreVersion = "1.22"
+val jmhVersion = "1.22"
 
 plugins {
     kotlin("jvm") version "1.3.72"
@@ -17,7 +17,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
     // Benchmarking
-    implementation("org.openjdk.jmh", "jmh-core", jmhCoreVersion)
+    jmh("org.openjdk.jmh", "jmh-core", jmhVersion)
 }
 
 tasks {
@@ -30,5 +30,6 @@ tasks {
 }
 
 jmh {
-    jmhVersion = jmhCoreVersion
+    humanOutputFile = project.file("${project.buildDir}/reports/jmh/human.txt") // human-readable output file
+    resultsFile = project.file("${project.buildDir}/reports/jmh/results.txt") // results file
 }
