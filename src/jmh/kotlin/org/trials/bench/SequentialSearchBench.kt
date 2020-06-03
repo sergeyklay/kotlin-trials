@@ -9,23 +9,21 @@ import java.util.concurrent.TimeUnit
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.NANOSECONDS)
 @Warmup(iterations = 10, time = 55, timeUnit = TimeUnit.MILLISECONDS)
-@Measurement(iterations = 100, batchSize = 10, time = 55, timeUnit = TimeUnit.MILLISECONDS)
+@Measurement(iterations = 100, time = 55, timeUnit = TimeUnit.MILLISECONDS)
 open class SequentialSearchBench {
     private var searcher: SequentialSearch<Int> = SequentialSearch()
-    private var collections: MutableMap<Int, List<Int>> = mutableMapOf()
     private var needles: MutableMap<Int, Int> = mutableMapOf()
+    private var collections: MutableMap<Int, List<Int>> = mutableMapOf(
+        4096   to (1..4096).toList(),
+        8192   to (1..8192).toList(),
+        16384  to (1..16384).toList(),
+        32768  to (1..32768).toList(),
+        65536  to (1..65536).toList(),
+        131072 to (1..131072).toList()
+    )
 
     @Setup(Level.Iteration)
     fun setUp() {
-        collections = mutableMapOf(
-            4096   to (1..4096).toList(),
-            8192   to (1..8192).toList(),
-            16384  to (1..16384).toList(),
-            32768  to (1..32768).toList(),
-            65536  to (1..65536).toList(),
-            131072 to (1..131072).toList()
-        )
-
         needles = mutableMapOf(
             4096   to (1..4096).shuffled().first(),
             8192   to (1..8192).shuffled().first(),

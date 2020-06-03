@@ -1,7 +1,7 @@
-Benchmark                        Mode  Cnt       Score       Error  Units
-SequentialSearchBench.e131072p1  avgt  500  760990.228 ± 66160.328  ns/op
-SequentialSearchBench.e16384p1   avgt  500  103136.286 ± 10167.694  ns/op
-SequentialSearchBench.e32768p1   avgt  500  201881.468 ± 18405.260  ns/op
-SequentialSearchBench.e4096p1    avgt  500   29062.046 ±  2667.311  ns/op
-SequentialSearchBench.e65536p1   avgt  500  377973.521 ± 34092.372  ns/op
-SequentialSearchBench.e8192p1    avgt  500   49269.711 ±  4653.717  ns/op
+Benchmark                        Mode  Cnt      Score      Error  Units
+SequentialSearchBench.e131072p1  avgt  500  99982.924 ± 9223.365  ns/op
+SequentialSearchBench.e16384p1   avgt  500  12056.879 ± 1196.206  ns/op
+SequentialSearchBench.e32768p1   avgt  500  25427.337 ± 2279.132  ns/op
+SequentialSearchBench.e4096p1    avgt  500   2942.684 ±  253.748  ns/op
+SequentialSearchBench.e65536p1   avgt  500  53712.986 ± 4862.916  ns/op
+SequentialSearchBench.e8192p1    avgt  500   6049.815 ±  528.164  ns/op
