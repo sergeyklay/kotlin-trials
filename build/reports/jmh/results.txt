@@ -1,0 +1,25 @@
+Benchmark                               (probability)  (size)  Mode  Cnt       Score      Error  Units
+SequentialSearchBench.sequentialSearch            1.0    4096  avgt  500    2393.119 ±  194.067  ns/op
+SequentialSearchBench.sequentialSearch            1.0    8192  avgt  500    4679.923 ±  406.441  ns/op
+SequentialSearchBench.sequentialSearch            1.0   16384  avgt  500    9981.561 ±  872.022  ns/op
+SequentialSearchBench.sequentialSearch            1.0   32768  avgt  500   18126.793 ± 1614.356  ns/op
+SequentialSearchBench.sequentialSearch            1.0   65536  avgt  500   40825.796 ± 3271.252  ns/op
+SequentialSearchBench.sequentialSearch            1.0  131072  avgt  500   77362.564 ± 6845.741  ns/op
+SequentialSearchBench.sequentialSearch            0.5    4096  avgt  500    3184.480 ±  222.888  ns/op
+SequentialSearchBench.sequentialSearch            0.5    8192  avgt  500    6591.327 ±  436.737  ns/op
+SequentialSearchBench.sequentialSearch            0.5   16384  avgt  500   14546.695 ±  992.005  ns/op
+SequentialSearchBench.sequentialSearch            0.5   32768  avgt  500   28435.682 ± 1940.584  ns/op
+SequentialSearchBench.sequentialSearch            0.5   65536  avgt  500   57472.874 ± 3603.024  ns/op
+SequentialSearchBench.sequentialSearch            0.5  131072  avgt  500  111454.292 ± 7355.664  ns/op
+SequentialSearchBench.sequentialSearch           0.25    4096  avgt  500    3878.477 ±  158.313  ns/op
+SequentialSearchBench.sequentialSearch           0.25    8192  avgt  500    7631.007 ±  396.956  ns/op
+SequentialSearchBench.sequentialSearch           0.25   16384  avgt  500   16847.027 ±  834.020  ns/op
+SequentialSearchBench.sequentialSearch           0.25   32768  avgt  500   33795.929 ± 1447.800  ns/op
+SequentialSearchBench.sequentialSearch           0.25   65536  avgt  500   64910.856 ± 3101.800  ns/op
+SequentialSearchBench.sequentialSearch           0.25  131072  avgt  500  131581.752 ± 6088.828  ns/op
+SequentialSearchBench.sequentialSearch            0.0    4096  avgt  500    4333.596 ±   42.548  ns/op
+SequentialSearchBench.sequentialSearch            0.0    8192  avgt  500    8823.909 ±  123.017  ns/op
+SequentialSearchBench.sequentialSearch            0.0   16384  avgt  500   19733.033 ±  271.559  ns/op
+SequentialSearchBench.sequentialSearch            0.0   32768  avgt  500   39435.315 ±  512.511  ns/op
+SequentialSearchBench.sequentialSearch            0.0   65536  avgt  500   76402.476 ±  980.332  ns/op
+SequentialSearchBench.sequentialSearch            0.0  131072  avgt  500  151170.471 ± 2013.385  ns/op
