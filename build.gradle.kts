@@ -30,6 +30,7 @@ tasks {
 }
 
 jmh {
+    threads = 4 // Number of worker threads to run with
     verbosity = "NORMAL" // Verbosity mode. Available modes are: [SILENT, NORMAL, EXTRA]
     humanOutputFile = project.file("${project.buildDir}/reports/jmh/human.txt") // human-readable output file
     resultsFile = project.file("${project.buildDir}/reports/jmh/results.txt") // results file

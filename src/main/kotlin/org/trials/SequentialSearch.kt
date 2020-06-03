@@ -10,16 +10,4 @@ class SequentialSearch<T> {
 
         return false
     }
-
-    fun search(collection: Iterable<T>, t: T): Boolean {
-        val iter: Iterator<T> = collection.iterator()
-
-        while (iter.hasNext()) {
-            if (iter.next() == t) {
-                return true
-            }
-        }
-
-        return false
-    }
 }
