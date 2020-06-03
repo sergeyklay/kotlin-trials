@@ -1,0 +1,7 @@
+Benchmark                        Mode  Cnt       Score       Error  Units
+SequentialSearchBench.e131072p1  avgt  500  760990.228 ± 66160.328  ns/op
+SequentialSearchBench.e16384p1   avgt  500  103136.286 ± 10167.694  ns/op
+SequentialSearchBench.e32768p1   avgt  500  201881.468 ± 18405.260  ns/op
+SequentialSearchBench.e4096p1    avgt  500   29062.046 ±  2667.311  ns/op
+SequentialSearchBench.e65536p1   avgt  500  377973.521 ± 34092.372  ns/op
+SequentialSearchBench.e8192p1    avgt  500   49269.711 ±  4653.717  ns/op

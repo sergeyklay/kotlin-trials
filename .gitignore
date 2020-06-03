@@ -8,3 +8,4 @@
 !gradle/wrapper/gradle-wrapper.jar
 .gradle
 build
+!build/reports/jmh/results.txt
