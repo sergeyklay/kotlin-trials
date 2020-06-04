@@ -31,12 +31,12 @@ open class SearchBench : SizedBenchmark() {
     }
 
     @Benchmark
-    fun sequentialSearch(blackhole: Blackhole) {
-        blackhole.consume(sequentialSearcher.search(collection, needle))
+    fun binarySearch(blackhole: Blackhole) {
+        blackhole.consume(binarySearcher.search(collection, needle))
     }
 
     @Benchmark
-    fun binarySearch(blackhole: Blackhole) {
-        blackhole.consume(binarySearcher.search(collection, needle))
+    fun sequentialSearch(blackhole: Blackhole) {
+        blackhole.consume(sequentialSearcher.search(collection, needle))
     }
 }
