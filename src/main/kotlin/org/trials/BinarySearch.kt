@@ -3,7 +3,7 @@ package org.trials
 class BinarySearch<T: Comparable<T>> {
     fun search(collection: Array<T>, target: T): Boolean {
         var low = 0
-        var high = collection.size
+        var high = collection.size - 1
 
         while (low <= high) {
             val mid: Int = (low + high) / 2
