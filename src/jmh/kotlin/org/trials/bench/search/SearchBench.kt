@@ -1,9 +1,9 @@
-package org.trials.bench
+package org.trials.bench.search
 
 import org.openjdk.jmh.annotations.*
 import org.openjdk.jmh.infra.Blackhole
-import org.trials.BinarySearch
-import org.trials.SequentialSearch
+import org.trials.search.BinarySearch
+import org.trials.search.SequentialSearch
 import java.util.*
 import java.util.concurrent.TimeUnit
 
@@ -13,8 +13,10 @@ import java.util.concurrent.TimeUnit
 @Measurement(iterations = 100, time = 55, timeUnit = TimeUnit.MILLISECONDS)
 open class SearchBench : SizedBenchmark() {
     private var random = Random()
-    private var sequentialSearcher: SequentialSearch<Int> = SequentialSearch()
-    private var binarySearcher: BinarySearch<Int> = BinarySearch()
+    private var sequentialSearcher: SequentialSearch<Int> =
+        SequentialSearch()
+    private var binarySearcher: BinarySearch<Int> =
+        BinarySearch()
 
     private var collection: Array<Int> = arrayOf()
     private var needle: Int = 0

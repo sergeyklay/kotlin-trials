@@ -1,4 +1,4 @@
-package org.trials
+package org.trials.search
 
 class BinarySearch<T: Comparable<T>> {
     fun search(collection: Array<T>, target: T): Boolean {

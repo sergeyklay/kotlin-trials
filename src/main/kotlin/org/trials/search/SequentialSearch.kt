@@ -1,4 +1,4 @@
-package org.trials
+package org.trials.search
 
 class SequentialSearch<T> {
     fun search(collection: Array<T>, t: T): Boolean {

@@ -1,4 +1,4 @@
-package org.trials.bench
+package org.trials.bench.search
 
 import org.openjdk.jmh.annotations.*
 
