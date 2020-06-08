@@ -2,10 +2,7 @@
 
 [![Build Status][actions-badge]][actions link]
 
-My primary playground for doing algorithmic trials using Kotlin. Hence, the
-name. Reading [Introduction to Algorithms][algo-book] nowadays and I put my
-solutions for exercises given in the book in this tutorial. Some other utils
-as well.
+My primary playground for doing algorithmic trials using Kotlin. Hence, the name.
 
 ## Contents
 - **Search**
