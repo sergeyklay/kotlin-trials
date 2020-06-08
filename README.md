@@ -2,14 +2,16 @@
 
 [![Build Status][actions-badge]][actions link]
 
-For general purpose projects setup this repository contains some general
-purpose code, keeping it for my understanding and also keeping a log for
-what I've been learning.
+My primary playground for doing algorithmic trials using Kotlin. Hence, the
+name. Reading [Introduction to Algorithms][algo-book] nowadays and I put my
+solutions for exercises given in the book in this tutorial. Some other utils
+as well.
 
-As [Bruce Eckel][eckel] wrote in his book '[Thinking in Java][thinking-in-java]',
-the satisfaction of re-writing a class is in getting things right. So I keep
-practicing something now and then. This repository is primary a playground
-for those trials. Hence, the name.
+## Contents
+- **Search**
+  - [Binary Search][bin-search-impl] _O(log n)_
+  - [Jump Search][jump-search-impl] _O(√n)_
+  - [Linear Search][lin-search-impl] _O(n)_
 
 ## Run benchmarks
 
@@ -30,5 +32,7 @@ For more see [LICENSE](./LICENSE) file.
 
 [actions link]: https://github.com/sergeyklay/kotlin-trials/actions
 [actions-badge]: https://github.com/sergeyklay/kotlin-trials/workflows/build/badge.svg
-[eckel]: https://en.wikipedia.org/wiki/Bruce_Eckel
-[thinking-in-java]: https://en.wikipedia.org/wiki/Thinking_in_Java
+[algo-book]: https://www.amazon.com/Introduction-Algorithms-3rd-MIT-Press/dp/0262033844
+[bin-search-impl]: https://github.com/sergeyklay/kotlin-trials/blob/master/src/main/kotlin/org/trials/search/BinarySearch.kt
+[jump-search-impl]: https://github.com/sergeyklay/kotlin-trials/blob/master/src/main/kotlin/org/trials/search/JumpSearch.kt
+[lin-search-impl]: https://github.com/sergeyklay/kotlin-trials/blob/master/src/main/kotlin/org/trials/search/LinearSearch.kt
