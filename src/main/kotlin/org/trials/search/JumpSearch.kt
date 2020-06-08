@@ -11,7 +11,7 @@ import kotlin.math.min
  *
  * The time complexity is O(√n).
  */
-class JumpSearch<T: Comparable<T>> {
+class JumpSearch<T : Comparable<T>> {
     fun search(collection: Array<T>, target: T): Boolean {
         if (collection.isEmpty()) {
             return false
@@ -30,12 +30,12 @@ class JumpSearch<T: Comparable<T>> {
         }
 
         val min = min(block, collection.size)
-        while(collection[from] < target) {
+        while (collection[from] < target) {
             if (++from == min) {
                 return false
             }
         }
 
-        return  collection[from] == target
+        return collection[from] == target
     }
 }
