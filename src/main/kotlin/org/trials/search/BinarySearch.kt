@@ -1,7 +1,18 @@
 package org.trials.search
 
+/**
+ * Binary search is a fast algorithm for finding the position of an element in
+ * a sorted array. The algorithm runs in work logarithmic time making O(log ⁡n)
+ * comparisons, where n is the length of the input array.
+ *
+ * The time complexity is O(log n).
+ */
 class BinarySearch<T: Comparable<T>> {
     fun search(collection: Array<T>, target: T): Boolean {
+        if (collection.isEmpty()) {
+            return false
+        }
+
         var low = 0
         var high = collection.size - 1
 
