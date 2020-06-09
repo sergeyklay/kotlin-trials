@@ -6,7 +6,7 @@ import org.trials.search.BinarySearch
 
 class BinarySearchTest {
     @Test
-    fun shouldFindElement() {
+    fun `should find element`() {
         val searcher: BinarySearch<Int> = BinarySearch()
         val collection = (1..100).toList().toTypedArray()
 
@@ -17,7 +17,7 @@ class BinarySearchTest {
     }
 
     @Test
-    fun shouldNotFindElementInEmptyArray() {
+    fun `should not find element in empty array`() {
         val searcher: BinarySearch<Int> = BinarySearch()
         val collection = arrayOf<Int>()
 
@@ -26,7 +26,7 @@ class BinarySearchTest {
     }
 
     @Test
-    fun shouldNotFindElement() {
+    fun `should not find element`() {
         val searcher: BinarySearch<Int> = BinarySearch()
         val collection = (1..100).toList().toTypedArray()
 

@@ -6,7 +6,7 @@ import org.trials.search.LinearSearch
 
 class LinearSearchTest {
     @Test
-    fun shouldFindElement() {
+    fun `should find element`() {
         val searcher: LinearSearch<Int> = LinearSearch()
         val collection = (1..100).toList().toTypedArray()
 
@@ -17,7 +17,7 @@ class LinearSearchTest {
     }
 
     @Test
-    fun shouldNotFindElementInEmptyArray() {
+    fun `should not find element in empty array`() {
         val searcher: LinearSearch<Int> = LinearSearch()
         val collection = arrayOf<Int>()
 
@@ -26,7 +26,7 @@ class LinearSearchTest {
     }
 
     @Test
-    fun shouldNotFindElement() {
+    fun `should not find element`() {
         val searcher: LinearSearch<Int> = LinearSearch()
         val collection = (1..100).toList().toTypedArray()
 

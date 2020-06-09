@@ -6,7 +6,7 @@ import org.trials.search.JumpSearch
 
 class JumpSearchTest {
     @Test
-    fun shouldFindElement() {
+    fun `should find element`() {
         val searcher: JumpSearch<Int> = JumpSearch()
         val collection = (1..100).toList().toTypedArray()
 
@@ -17,7 +17,7 @@ class JumpSearchTest {
     }
 
     @Test
-    fun shouldNotFindElementInEmptyArray() {
+    fun `should not find element in empty array`() {
         val searcher: JumpSearch<Int> = JumpSearch()
         val collection = arrayOf<Int>()
 
@@ -26,7 +26,7 @@ class JumpSearchTest {
     }
 
     @Test
-    fun shouldNotFindElement() {
+    fun `should not find element`() {
         val searcher: JumpSearch<Int> = JumpSearch()
         val collection = (1..100).toList().toTypedArray()
 
