@@ -86,4 +86,41 @@ class MatrixTest {
         assertEquals(listOf(4, 2, 0), actual[0])
         assertEquals(listOf(5, 0, 1), actual[1])
     }
+
+    @Test
+    fun shouldSubtractMatrices() {
+        val matrix = Matrix()
+        val actual = matrix.subtract(
+            listOf(
+                listOf(1, 2),
+                listOf(2, 3)
+            ),
+            listOf(
+                listOf(-2, 0),
+                listOf(2, 5)
+            )
+        )
+
+        assertEquals(2, actual.size)
+
+        assertEquals(listOf(3, 2), actual[0])
+        assertEquals(listOf(0, -2), actual[1])
+    }
+
+    @Test
+    fun shouldDetectZeroMatrix() {
+        val matrix = Matrix()
+
+        assertTrue(matrix.isZero(listOf(
+            listOf(0, 0, 0),
+            listOf(0, 0, 0),
+            listOf(0, 0, 0)
+        )))
+
+        assertFalse(matrix.isZero(listOf(
+            listOf(0, 0, 0),
+            listOf(0, 1, 0),
+            listOf(0, 0, 0)
+        )))
+    }
 }

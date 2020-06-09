@@ -47,4 +47,25 @@ class Matrix {
             }
         }
     }
+
+    /**
+     * Subtract two matrices.
+     * Note: matrices must be the same dimension (or size).
+     */
+    fun subtract(c1: List<List<Int>>, c2: List<List<Int>>): List<List<Int>> {
+        return c1.mapIndexed { row, collection ->
+            collection.mapIndexed { col, value ->
+                value - c2[row][col]
+            }
+        }
+    }
+
+    /**
+     * A zero matrix is a matrix in which every element is zero.
+     */
+    fun isZero(collection: List<List<Int>>): Boolean {
+        return collection.isNotEmpty() && !collection.any { c ->
+            c.filterNot { it == 0 }.isNotEmpty()
+        }
+    }
 }
