@@ -11,6 +11,7 @@ val jvmBytecodeVersion = "1.8"
 
 val jmhVersion = "1.23"
 val jupiterVersion = "5.6.2"
+val kotestVersion = "4.0.6"
 
 plugins {
     kotlin("jvm") version "1.3.72"
@@ -26,8 +27,13 @@ repositories {
 
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
+
+    testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
+    testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
+    testImplementation("io.kotest:kotest-property-jvm:$kotestVersion")
 
     // Benchmarking
     jmh("org.openjdk.jmh", "jmh-core", jmhVersion)

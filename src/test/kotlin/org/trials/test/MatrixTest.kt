@@ -1,20 +1,22 @@
 package org.trials.test
 
+import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.matchers.should
+import io.kotest.matchers.string.startWith
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import org.trials.Matrix
 
-
 class MatrixTest {
     @Test
-    fun shouldNotTransposeEmptyMatrix() {
+    fun `should not transpose empty matrices`() {
         val matrix = Matrix()
 
         assertTrue(matrix.transpose(emptyList()).isEmpty())
     }
 
     @Test
-    fun shouldTransposeMatrix() {
+    fun `should transpose matrices`() {
         val matrix = Matrix()
         val actual = matrix.transpose(
             listOf(
@@ -31,7 +33,7 @@ class MatrixTest {
     }
 
     @Test
-    fun shouldTransposeTransposedMatrix() {
+    fun `transpose matrix twice will return it to the initial state`() {
         val matrix = Matrix()
         val actual = matrix.transpose(
             matrix.transpose(
@@ -51,7 +53,7 @@ class MatrixTest {
     }
 
     @Test
-    fun shouldMultiplyMatrix() {
+    fun `should multiply matrices`() {
         val matrix = Matrix()
         val actual = matrix.multiply(
             listOf(
@@ -68,7 +70,7 @@ class MatrixTest {
     }
 
     @Test
-    fun shouldSumMatrices() {
+    fun `should sum matrices`() {
         val matrix = Matrix()
         val actual = matrix.sum(
             listOf(
@@ -88,7 +90,42 @@ class MatrixTest {
     }
 
     @Test
-    fun shouldSubtractMatrices() {
+    fun `calling sum on matrices with not the same dimension will throw an exception`() {
+        val matrix = Matrix()
+        val exception1 = shouldThrow<RuntimeException> {
+            matrix.sum(
+                listOf(
+                    listOf(3, 0, -3),
+                    listOf(2, -1, 8),
+                    listOf(2, -1, 8)
+                ),
+                listOf(
+                    listOf(1, 2, 3),
+                    listOf(3, 1, -7)
+                )
+            )
+        }
+
+        exception1.message should startWith("Dimension of matrices is not equivalent")
+
+        val exception2 = shouldThrow<RuntimeException> {
+            matrix.sum(
+                listOf(
+                    listOf(3, 0, -3),
+                    listOf(2, -1)
+                ),
+                listOf(
+                    listOf(1, 2, 3),
+                    listOf(3, 1, -7)
+                )
+            )
+        }
+
+        exception2.message should startWith("Dimension of matrices is not equivalent")
+    }
+
+    @Test
+    fun `should subtract matrices`() {
         val matrix = Matrix()
         val actual = matrix.subtract(
             listOf(
@@ -108,19 +145,27 @@ class MatrixTest {
     }
 
     @Test
-    fun shouldDetectZeroMatrix() {
+    fun `should detect zero matrix`() {
         val matrix = Matrix()
 
-        assertTrue(matrix.isZero(listOf(
-            listOf(0, 0, 0),
-            listOf(0, 0, 0),
-            listOf(0, 0, 0)
-        )))
+        assertTrue(
+            matrix.isZero(
+                listOf(
+                    listOf(0, 0, 0),
+                    listOf(0, 0, 0),
+                    listOf(0, 0, 0)
+                )
+            )
+        )
 
-        assertFalse(matrix.isZero(listOf(
-            listOf(0, 0, 0),
-            listOf(0, 1, 0),
-            listOf(0, 0, 0)
-        )))
+        assertFalse(
+            matrix.isZero(
+                listOf(
+                    listOf(0, 0, 0),
+                    listOf(0, 1, 0),
+                    listOf(0, 0, 0)
+                )
+            )
+        )
     }
 }

@@ -37,10 +37,21 @@ class Matrix {
     }
 
     /**
+     * Asserts that matrices have the same dimension.
+     */
+    private fun assertSameDimension(c1: List<List<Int>>, c2: List<List<Int>>) {
+        if (c1.map { it.size } != c2.map { it.size }) {
+            throw RuntimeException("Dimension of matrices is not equivalent")
+        }
+    }
+
+    /**
      * Sum of matrices.
      * Note: matrices must be the same dimension (or size).
      */
     fun sum(c1: List<List<Int>>, c2: List<List<Int>>): List<List<Int>> {
+        assertSameDimension(c1, c2)
+
         return c1.mapIndexed { row, collection ->
             collection.mapIndexed { col, value ->
                 value + c2[row][col]
@@ -53,6 +64,8 @@ class Matrix {
      * Note: matrices must be the same dimension (or size).
      */
     fun subtract(c1: List<List<Int>>, c2: List<List<Int>>): List<List<Int>> {
+        assertSameDimension(c1, c2)
+
         return c1.mapIndexed { row, collection ->
             collection.mapIndexed { col, value ->
                 value - c2[row][col]
