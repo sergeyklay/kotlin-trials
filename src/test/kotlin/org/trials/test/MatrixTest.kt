@@ -92,7 +92,7 @@ class MatrixTest {
     @Test
     fun `calling sum on matrices with not the same dimension will throw an exception`() {
         val matrix = Matrix()
-        val exception1 = shouldThrow<RuntimeException> {
+        val exception = shouldThrow<RuntimeException> {
             matrix.sum(
                 listOf(
                     listOf(3, 0, -3),
@@ -106,22 +106,7 @@ class MatrixTest {
             )
         }
 
-        exception1.message should startWith("Dimension of matrices is not equivalent")
-
-        val exception2 = shouldThrow<RuntimeException> {
-            matrix.sum(
-                listOf(
-                    listOf(3, 0, -3),
-                    listOf(2, -1)
-                ),
-                listOf(
-                    listOf(1, 2, 3),
-                    listOf(3, 1, -7)
-                )
-            )
-        }
-
-        exception2.message should startWith("Dimension of matrices is not equivalent")
+        exception.message should startWith("Dimension of matrices is not equivalent")
     }
 
     @Test
@@ -142,6 +127,25 @@ class MatrixTest {
 
         assertEquals(listOf(3, 2), actual[0])
         assertEquals(listOf(0, -2), actual[1])
+    }
+
+    @Test
+    fun `calling subtract on matrices with not the same dimension will throw an exception`() {
+        val matrix = Matrix()
+        val exception = shouldThrow<RuntimeException> {
+            matrix.subtract(
+                listOf(
+                    listOf(3, 0, -3),
+                    listOf(2, -1)
+                ),
+                listOf(
+                    listOf(1, 2, 3),
+                    listOf(3, 1, -7)
+                )
+            )
+        }
+
+        exception.message should startWith("Dimension of matrices is not equivalent")
     }
 
     @Test
