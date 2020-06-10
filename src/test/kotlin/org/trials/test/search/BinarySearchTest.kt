@@ -4,7 +4,7 @@ import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.matchers.shouldBe
 import org.trials.search.BinarySearch
 
-class BinarySearchTest: ShouldSpec({
+class BinarySearchTest : ShouldSpec({
     val searcher: BinarySearch<Int> = BinarySearch()
     val collection = (1..100).toList().toTypedArray()
 

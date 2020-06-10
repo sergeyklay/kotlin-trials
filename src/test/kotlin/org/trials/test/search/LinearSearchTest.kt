@@ -4,7 +4,7 @@ import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.matchers.shouldBe
 import org.trials.search.LinearSearch
 
-class LinearSearchTest: ShouldSpec({
+class LinearSearchTest : ShouldSpec({
     val searcher: LinearSearch<Int> = LinearSearch()
     val collection = (1..100).toList().toTypedArray()
 

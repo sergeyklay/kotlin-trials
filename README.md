@@ -6,10 +6,11 @@ My primary playground for doing algorithmic trials using Kotlin. Hence, the name
 
 ## Contents
 - **Search**
-  - [Binary Search][bin-search-impl]
-  - [Jump Search][jump-search-impl]
-  - [Linear Search][lin-search-impl]
-- [Matrix][matrix-impl]
+  - [`BinarySearch`][bin-search-impl]
+  - [`JumpSearch`][jump-search-impl]
+  - [`LinearSearch`][lin-search-impl]
+- **Matrix**
+  - [`IntMatrix`][int-matrix-impl]
 
 ## Run benchmarks
 
@@ -34,4 +35,4 @@ For more see [LICENSE](./LICENSE) file.
 [bin-search-impl]: https://github.com/sergeyklay/kotlin-trials/blob/master/src/main/kotlin/org/trials/search/BinarySearch.kt
 [jump-search-impl]: https://github.com/sergeyklay/kotlin-trials/blob/master/src/main/kotlin/org/trials/search/JumpSearch.kt
 [lin-search-impl]: https://github.com/sergeyklay/kotlin-trials/blob/master/src/main/kotlin/org/trials/search/LinearSearch.kt
-[matrix-impl]: https://github.com/sergeyklay/kotlin-trials/blob/master/src/main/kotlin/org/trials/Matrix.kt
+[int-matrix-impl]: https://github.com/sergeyklay/kotlin-trials/blob/master/src/main/kotlin/org/trials/IntMatrix.kt

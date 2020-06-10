@@ -4,7 +4,7 @@ import io.kotest.core.spec.style.ShouldSpec
 import io.kotest.matchers.shouldBe
 import org.trials.search.JumpSearch
 
-class JumpSearchTest: ShouldSpec({
+class JumpSearchTest : ShouldSpec({
     val searcher: JumpSearch<Int> = JumpSearch()
     val collection = (1..100).toList().toTypedArray()
 

@@ -7,23 +7,24 @@ import io.kotest.matchers.comparables.shouldBeEqualComparingTo
 import io.kotest.matchers.should
 import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.startWith
-import org.trials.Matrix
+import org.trials.IntMatrix
 
-class MatrixTest: ShouldSpec({
-    val matrix = Matrix()
-
+class IntMatrixTest : ShouldSpec({
     should("not transpose empty matrices") {
-        matrix.transpose(emptyList()).isEmpty() shouldBe true
+        val matrix = IntMatrix()
+        matrix.transpose().isEmpty() shouldBe true
     }
 
     should("transpose matrices") {
-        val actual = matrix.transpose(
+        val matrix = IntMatrix(
             listOf(
                 listOf(1, 2),
                 listOf(3, 4),
                 listOf(5, 6)
             )
         )
+
+        val actual = matrix.transpose()
 
         actual.size shouldBeEqualComparingTo 2
 
@@ -38,18 +39,18 @@ class MatrixTest: ShouldSpec({
             listOf(5, 6)
         )
 
-        val actual = matrix.transpose(matrix.transpose(expected))
-        actual shouldContainExactly expected
+        IntMatrix(IntMatrix(expected).transpose()).transpose() shouldContainExactly expected
     }
 
     should("multiply matrices") {
-        val actual = matrix.multiply(
+        val matrix = IntMatrix(
             listOf(
                 listOf(5, 2),
                 listOf(3, 1)
-            ),
-            2
+            )
         )
+
+        val actual = matrix.multiply(2)
 
         actual.size shouldBeEqualComparingTo 2
 
@@ -58,11 +59,14 @@ class MatrixTest: ShouldSpec({
     }
 
     should("sum matrices") {
-        val actual = matrix.sum(
+        val matrix = IntMatrix(
             listOf(
                 listOf(3, 0, -3),
                 listOf(2, -1, 8)
-            ),
+            )
+        )
+
+        val actual = matrix.sum(
             listOf(
                 listOf(1, 2, 3),
                 listOf(3, 1, -7)
@@ -77,12 +81,15 @@ class MatrixTest: ShouldSpec({
 
     should("throw an exception when calling sum on matrices with not the same dimension") {
         val exception = shouldThrow<RuntimeException> {
-            matrix.sum(
+            val matrix = IntMatrix(
                 listOf(
                     listOf(3, 0, -3),
                     listOf(2, -1, 8),
                     listOf(2, -1, 8)
-                ),
+                )
+            )
+
+            matrix.sum(
                 listOf(
                     listOf(1, 2, 3),
                     listOf(3, 1, -7)
@@ -94,11 +101,14 @@ class MatrixTest: ShouldSpec({
     }
 
     should("subtract matrices") {
-        val actual = matrix.subtract(
+        val matrix = IntMatrix(
             listOf(
                 listOf(1, 2),
                 listOf(2, 3)
-            ),
+            )
+        )
+
+        val actual = matrix.subtract(
             listOf(
                 listOf(-2, 0),
                 listOf(2, 5)
@@ -113,11 +123,14 @@ class MatrixTest: ShouldSpec({
 
     should("throw an exception when calling subtract on matrices with not the same dimension") {
         val exception = shouldThrow<RuntimeException> {
-            matrix.subtract(
+            val matrix = IntMatrix(
                 listOf(
                     listOf(3, 0, -3),
                     listOf(2, -1)
-                ),
+                )
+            )
+
+            matrix.subtract(
                 listOf(
                     listOf(1, 2, 3),
                     listOf(3, 1, -7)
@@ -129,24 +142,25 @@ class MatrixTest: ShouldSpec({
     }
 
     should("detect zero matrix") {
-        matrix.isZero(
+        IntMatrix(
             listOf(
                 listOf(0, 0, 0),
                 listOf(0, 0, 0),
                 listOf(0, 0, 0)
             )
-        ) shouldBe true
+        ).isZero() shouldBe true
 
-        matrix.isZero(
+        IntMatrix(
             listOf(
                 listOf(0, 0, 0),
                 listOf(0, 1, 0),
                 listOf(0, 0, 0)
             )
-        ) shouldBe false
+        ).isZero() shouldBe false
     }
 
     should("create zero matrix") {
+        val matrix = IntMatrix()
         val actual = matrix.zeroOf(3, 3)
 
         actual.size shouldBeEqualComparingTo 3
