@@ -5,7 +5,7 @@ import io.kotest.matchers.collections.shouldContainExactly
 import io.kotest.matchers.comparables.shouldBeEqualComparingTo
 import org.trials.IntMatrix
 
-class MultiplyMatrixTest: ShouldSpec({
+class MultiplyMatrixTest : ShouldSpec({
     val matrix = IntMatrix()
 
     should("multiply a matrix by the given scalar") {

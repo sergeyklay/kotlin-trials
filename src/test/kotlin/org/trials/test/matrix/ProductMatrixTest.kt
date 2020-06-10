@@ -8,11 +8,11 @@ import io.kotest.matchers.should
 import io.kotest.matchers.string.startWith
 import org.trials.IntMatrix
 
-class ProductMatrixTest: ShouldSpec({
+class ProductMatrixTest : ShouldSpec({
     val matrix = IntMatrix()
 
     should("product matrices") {
-        val actual = matrix.product(
+        val actual = matrix.product1(
             listOf(
                 listOf(2, 4, 6),
                 listOf(1, 3, 5)
@@ -31,7 +31,7 @@ class ProductMatrixTest: ShouldSpec({
     }
 
     should("product two vectors") {
-        val actual = matrix.product(
+        val actual = matrix.product1(
             listOf(
                 listOf(4),
                 listOf(5),
@@ -51,7 +51,7 @@ class ProductMatrixTest: ShouldSpec({
 
     should("throw an exception when calling product on empty matrices") {
         val exception1 = shouldThrow<RuntimeException> {
-            matrix.product(
+            matrix.product1(
                 listOf(
                     listOf(3, 0, -3),
                     listOf(2, -1)
@@ -63,7 +63,7 @@ class ProductMatrixTest: ShouldSpec({
         exception1.message should startWith("To perform a dot product both matrices should not be empty")
 
         val exception2 = shouldThrow<RuntimeException> {
-            matrix.product(
+            matrix.product1(
                 emptyList(),
                 listOf(
                     listOf(3, 0, -3),
@@ -77,7 +77,7 @@ class ProductMatrixTest: ShouldSpec({
 
     should("throw an exception when calling product on matrices with invalid dimension") {
         val exception = shouldThrow<RuntimeException> {
-            matrix.product(
+            matrix.product1(
                 listOf(
                     listOf(3, 0, -3),
                     listOf(2, -1)

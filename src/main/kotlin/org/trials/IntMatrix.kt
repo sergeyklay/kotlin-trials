@@ -35,8 +35,6 @@ class IntMatrix() {
         return collection.map {
             it.map { int -> int * scalar }
         }
-
-
     }
 
     /**
@@ -49,7 +47,7 @@ class IntMatrix() {
      * Note: The number of columns of the 1st matrix must be equal to the number
      *       of rows of the 2nd matrix.
      */
-    fun product(c1: List<List<Int>>, c2: List<List<Int>>): List<List<Int>> {
+    fun product1(c1: List<List<Int>>, c2: List<List<Int>>): List<List<Int>> {
         if (c1.isEmpty() || c2.isEmpty()) {
             throw RuntimeException("To perform a dot product both matrices should not be empty")
         }

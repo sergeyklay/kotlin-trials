@@ -6,7 +6,7 @@ import io.kotest.matchers.comparables.shouldBeEqualComparingTo
 import io.kotest.matchers.shouldBe
 import org.trials.IntMatrix
 
-class UtilsMatrixTest: ShouldSpec({
+class UtilsMatrixTest : ShouldSpec({
     val matrix = IntMatrix()
 
     should("detect zero matrix") {

@@ -6,7 +6,7 @@ import io.kotest.matchers.comparables.shouldBeEqualComparingTo
 import io.kotest.matchers.shouldBe
 import org.trials.IntMatrix
 
-class TransposeMatrixTest: ShouldSpec({
+class TransposeMatrixTest : ShouldSpec({
     val matrix = IntMatrix()
 
     should("not transpose empty matrices") {

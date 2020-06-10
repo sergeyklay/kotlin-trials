@@ -8,7 +8,7 @@ import io.kotest.matchers.should
 import io.kotest.matchers.string.startWith
 import org.trials.IntMatrix
 
-class SubtractMatrixTest: ShouldSpec({
+class SubtractMatrixTest : ShouldSpec({
     val matrix = IntMatrix()
 
     should("subtract matrices") {
