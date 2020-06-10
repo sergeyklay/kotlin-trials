@@ -15,9 +15,7 @@ class Matrix {
             return collection
         }
 
-        val response = MutableList(collection[0].size) {
-            MutableList(collection.size) { 0 }
-        }
+        val response = zeroOf(collection[0].size, collection.size)
 
         for (r in collection.indices) for (c in collection[0].indices) {
             response[c][r] = collection[r][c]
@@ -74,11 +72,22 @@ class Matrix {
     }
 
     /**
+     * Verifies that the matrix is zero.
      * A zero matrix is a matrix in which every element is zero.
      */
     fun isZero(collection: List<List<Int>>): Boolean {
         return collection.isNotEmpty() && !collection.any { c ->
             c.filterNot { it == 0 }.isNotEmpty()
+        }
+    }
+
+    /**
+     * Create a zero matrix.
+     * A zero matrix is a matrix in which every element is zero.
+     */
+    fun zeroOf(rows: Int, cols: Int): MutableList<MutableList<Int>> {
+        return MutableList(rows) {
+            MutableList(cols) { 0 }
         }
     }
 }
