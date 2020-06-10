@@ -10,21 +10,20 @@ import io.kotest.matchers.string.startWith
 import org.trials.IntMatrix
 
 class IntMatrixTest : ShouldSpec({
+    val matrix = IntMatrix()
+
     should("not transpose empty matrices") {
-        val matrix = IntMatrix()
-        matrix.transpose().isEmpty() shouldBe true
+        matrix.transpose(emptyList()).isEmpty() shouldBe true
     }
 
     should("transpose matrices") {
-        val matrix = IntMatrix(
+        val actual = matrix.transpose(
             listOf(
                 listOf(1, 2),
                 listOf(3, 4),
                 listOf(5, 6)
             )
         )
-
-        val actual = matrix.transpose()
 
         actual.size shouldBeEqualComparingTo 2
 
@@ -39,18 +38,16 @@ class IntMatrixTest : ShouldSpec({
             listOf(5, 6)
         )
 
-        IntMatrix(IntMatrix(expected).transpose()).transpose() shouldContainExactly expected
+        matrix.transpose(matrix.transpose(expected)) shouldContainExactly expected
     }
 
     should("multiply matrices") {
-        val matrix = IntMatrix(
+        val actual = matrix.multiply(
             listOf(
                 listOf(5, 2),
                 listOf(3, 1)
-            )
+            ), 2
         )
-
-        val actual = matrix.multiply(2)
 
         actual.size shouldBeEqualComparingTo 2
 
@@ -59,14 +56,11 @@ class IntMatrixTest : ShouldSpec({
     }
 
     should("sum matrices") {
-        val matrix = IntMatrix(
+        val actual = matrix.sum(
             listOf(
                 listOf(3, 0, -3),
                 listOf(2, -1, 8)
-            )
-        )
-
-        val actual = matrix.sum(
+            ),
             listOf(
                 listOf(1, 2, 3),
                 listOf(3, 1, -7)
@@ -81,15 +75,12 @@ class IntMatrixTest : ShouldSpec({
 
     should("throw an exception when calling sum on matrices with not the same dimension") {
         val exception = shouldThrow<RuntimeException> {
-            val matrix = IntMatrix(
+            matrix.sum(
                 listOf(
                     listOf(3, 0, -3),
                     listOf(2, -1, 8),
                     listOf(2, -1, 8)
-                )
-            )
-
-            matrix.sum(
+                ),
                 listOf(
                     listOf(1, 2, 3),
                     listOf(3, 1, -7)
@@ -101,14 +92,11 @@ class IntMatrixTest : ShouldSpec({
     }
 
     should("subtract matrices") {
-        val matrix = IntMatrix(
+        val actual = matrix.subtract(
             listOf(
                 listOf(1, 2),
                 listOf(2, 3)
-            )
-        )
-
-        val actual = matrix.subtract(
+            ),
             listOf(
                 listOf(-2, 0),
                 listOf(2, 5)
@@ -123,14 +111,11 @@ class IntMatrixTest : ShouldSpec({
 
     should("throw an exception when calling subtract on matrices with not the same dimension") {
         val exception = shouldThrow<RuntimeException> {
-            val matrix = IntMatrix(
+            matrix.subtract(
                 listOf(
                     listOf(3, 0, -3),
                     listOf(2, -1)
-                )
-            )
-
-            matrix.subtract(
+                ),
                 listOf(
                     listOf(1, 2, 3),
                     listOf(3, 1, -7)
@@ -142,25 +127,24 @@ class IntMatrixTest : ShouldSpec({
     }
 
     should("detect zero matrix") {
-        IntMatrix(
+        matrix.isZero(
             listOf(
                 listOf(0, 0, 0),
                 listOf(0, 0, 0),
                 listOf(0, 0, 0)
             )
-        ).isZero() shouldBe true
+        ) shouldBe true
 
-        IntMatrix(
+        matrix.isZero(
             listOf(
                 listOf(0, 0, 0),
                 listOf(0, 1, 0),
                 listOf(0, 0, 0)
             )
-        ).isZero() shouldBe false
+        ) shouldBe false
     }
 
     should("create zero matrix") {
-        val matrix = IntMatrix()
         val actual = matrix.zeroOf(3, 3)
 
         actual.size shouldBeEqualComparingTo 3
