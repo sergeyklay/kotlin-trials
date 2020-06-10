@@ -6,6 +6,8 @@ package org.trials
  */
 class IntMatrix() {
     /**
+     * Transpose the matrix.
+     *
      * Transpose of a matrix is an operator which flips a matrix over its diagonal,
      * that is it switches the row and column indices of the matrix A by producing
      * another matrix denoted as A(t).
@@ -26,16 +28,56 @@ class IntMatrix() {
 
     /**
      * Scalar multiplication.
+     *
      * Each entry in the matrix is multiplied by the given scalar.
      */
     fun multiply(collection: List<List<Int>>, scalar: Int): List<List<Int>> {
         return collection.map {
             it.map { int -> int * scalar }
         }
+
+
+    }
+
+    /**
+     * Multiply two matrices.
+     *
+     * Returns a sum of products of corresponding elements from a row of the
+     * first matrix and a column of the second.
+     *
+     * Note: To perform a dot product both matrices should not be empty.
+     * Note: The number of columns of the 1st matrix must be equal to the number
+     *       of rows of the 2nd matrix.
+     */
+    fun product(c1: List<List<Int>>, c2: List<List<Int>>): List<List<Int>> {
+        if (c1.isEmpty() || c2.isEmpty()) {
+            throw RuntimeException("To perform a dot product both matrices should not be empty")
+        }
+
+        if (c1[0].size != c2.size) {
+            throw RuntimeException(
+                "The number of columns of the 1st matrix must be equal to the number of rows of the 2nd matrix"
+            )
+        }
+
+        val response = zeroOf(c1.size, c2[0].size)
+        if (isZero(c1) || isZero(c2)) {
+            return response
+        }
+
+        val x = transpose(c2)
+        for (r in c1.indices) {
+            for (c in x.indices) {
+                response[r][c] = c1[r].mapIndexed { r1k, r1v -> r1v * x[c][r1k] }.sum()
+            }
+        }
+
+        return response
     }
 
     /**
      * Sum of matrices.
+     *
      * Note: matrices must be the same dimension (or size).
      */
     fun sum(c1: List<List<Int>>, c2: List<List<Int>>): List<List<Int>> {
@@ -50,6 +92,7 @@ class IntMatrix() {
 
     /**
      * Subtract two matrices.
+     *
      * Note: matrices must be the same dimension (or size).
      */
     fun subtract(c1: List<List<Int>>, c2: List<List<Int>>): List<List<Int>> {
@@ -64,6 +107,7 @@ class IntMatrix() {
 
     /**
      * Verifies that the matrix is zero.
+     *
      * A zero matrix is a matrix in which every element is zero.
      */
     fun isZero(collection: List<List<Int>>): Boolean {
@@ -74,6 +118,7 @@ class IntMatrix() {
 
     /**
      * Create a zero matrix.
+     *
      * A zero matrix is a matrix in which every element is zero.
      */
     fun zeroOf(rows: Int, cols: Int): MutableList<MutableList<Int>> {
