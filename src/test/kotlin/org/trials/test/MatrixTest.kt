@@ -1,23 +1,22 @@
 package org.trials.test
 
 import io.kotest.assertions.throwables.shouldThrow
+import io.kotest.core.spec.style.ShouldSpec
+import io.kotest.matchers.collections.shouldContainExactly
+import io.kotest.matchers.comparables.shouldBeEqualComparingTo
 import io.kotest.matchers.should
+import io.kotest.matchers.shouldBe
 import io.kotest.matchers.string.startWith
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test
 import org.trials.Matrix
 
-class MatrixTest {
-    @Test
-    fun `should not transpose empty matrices`() {
-        val matrix = Matrix()
+class MatrixTest: ShouldSpec({
+    val matrix = Matrix()
 
-        assertTrue(matrix.transpose(emptyList()).isEmpty())
+    should("not transpose empty matrices") {
+        matrix.transpose(emptyList()).isEmpty() shouldBe true
     }
 
-    @Test
-    fun `should transpose matrices`() {
-        val matrix = Matrix()
+    should("transpose matrices") {
         val actual = matrix.transpose(
             listOf(
                 listOf(1, 2),
@@ -26,35 +25,24 @@ class MatrixTest {
             )
         )
 
-        assertEquals(2, actual.size)
+        actual.size shouldBeEqualComparingTo 2
 
-        assertEquals(listOf(1, 3, 5), actual[0])
-        assertEquals(listOf(2, 4, 6), actual[1])
+        actual[0] shouldContainExactly listOf(1, 3, 5)
+        actual[1] shouldContainExactly listOf(2, 4, 6)
     }
 
-    @Test
-    fun `transpose matrix twice will return it to the initial state`() {
-        val matrix = Matrix()
-        val actual = matrix.transpose(
-            matrix.transpose(
-                listOf(
-                    listOf(1, 2),
-                    listOf(3, 4),
-                    listOf(5, 6)
-                )
-            )
+    should("get the matrix in the initial state after transpose it twice") {
+        val expected = listOf(
+            listOf(1, 2),
+            listOf(3, 4),
+            listOf(5, 6)
         )
 
-        assertEquals(3, actual.size)
-
-        assertEquals(listOf(1, 2), actual[0])
-        assertEquals(listOf(3, 4), actual[1])
-        assertEquals(listOf(5, 6), actual[2])
+        val actual = matrix.transpose(matrix.transpose(expected))
+        actual shouldContainExactly expected
     }
 
-    @Test
-    fun `should multiply matrices`() {
-        val matrix = Matrix()
+    should("multiply matrices") {
         val actual = matrix.multiply(
             listOf(
                 listOf(5, 2),
@@ -63,15 +51,13 @@ class MatrixTest {
             2
         )
 
-        assertEquals(2, actual.size)
+        actual.size shouldBeEqualComparingTo 2
 
-        assertEquals(listOf(10, 4), actual[0])
-        assertEquals(listOf(6, 2), actual[1])
+        actual[0] shouldContainExactly listOf(10, 4)
+        actual[1] shouldContainExactly listOf(6, 2)
     }
 
-    @Test
-    fun `should sum matrices`() {
-        val matrix = Matrix()
+    should("sum matrices") {
         val actual = matrix.sum(
             listOf(
                 listOf(3, 0, -3),
@@ -83,15 +69,13 @@ class MatrixTest {
             )
         )
 
-        assertEquals(2, actual.size)
+        actual.size shouldBeEqualComparingTo 2
 
-        assertEquals(listOf(4, 2, 0), actual[0])
-        assertEquals(listOf(5, 0, 1), actual[1])
+        actual[0] shouldContainExactly listOf(4, 2, 0)
+        actual[1] shouldContainExactly listOf(5, 0, 1)
     }
 
-    @Test
-    fun `calling sum on matrices with not the same dimension will throw an exception`() {
-        val matrix = Matrix()
+    should("throw an exception when calling sum on matrices with not the same dimension") {
         val exception = shouldThrow<RuntimeException> {
             matrix.sum(
                 listOf(
@@ -109,9 +93,7 @@ class MatrixTest {
         exception.message should startWith("Dimension of matrices is not equivalent")
     }
 
-    @Test
-    fun `should subtract matrices`() {
-        val matrix = Matrix()
+    should("subtract matrices") {
         val actual = matrix.subtract(
             listOf(
                 listOf(1, 2),
@@ -123,15 +105,13 @@ class MatrixTest {
             )
         )
 
-        assertEquals(2, actual.size)
+        actual.size shouldBeEqualComparingTo 2
 
-        assertEquals(listOf(3, 2), actual[0])
-        assertEquals(listOf(0, -2), actual[1])
+        actual[0] shouldContainExactly listOf(3, 2)
+        actual[1] shouldContainExactly listOf(0, -2)
     }
 
-    @Test
-    fun `calling subtract on matrices with not the same dimension will throw an exception`() {
-        val matrix = Matrix()
+    should("throw an exception when calling subtract on matrices with not the same dimension") {
         val exception = shouldThrow<RuntimeException> {
             matrix.subtract(
                 listOf(
@@ -148,28 +128,31 @@ class MatrixTest {
         exception.message should startWith("Dimension of matrices is not equivalent")
     }
 
-    @Test
-    fun `should detect zero matrix`() {
-        val matrix = Matrix()
-
-        assertTrue(
-            matrix.isZero(
-                listOf(
-                    listOf(0, 0, 0),
-                    listOf(0, 0, 0),
-                    listOf(0, 0, 0)
-                )
+    should("detect zero matrix") {
+        matrix.isZero(
+            listOf(
+                listOf(0, 0, 0),
+                listOf(0, 0, 0),
+                listOf(0, 0, 0)
             )
-        )
+        ) shouldBe true
 
-        assertFalse(
-            matrix.isZero(
-                listOf(
-                    listOf(0, 0, 0),
-                    listOf(0, 1, 0),
-                    listOf(0, 0, 0)
-                )
+        matrix.isZero(
+            listOf(
+                listOf(0, 0, 0),
+                listOf(0, 1, 0),
+                listOf(0, 0, 0)
             )
-        )
+        ) shouldBe false
     }
-}
+
+    should("create zero matrix") {
+        val actual = matrix.zeroOf(3, 3)
+
+        actual.size shouldBeEqualComparingTo 3
+
+        actual[0] shouldContainExactly listOf(0, 0, 0)
+        actual[1] shouldContainExactly listOf(0, 0, 0)
+        actual[2] shouldContainExactly listOf(0, 0, 0)
+    }
+})

@@ -10,7 +10,6 @@ import org.gradle.api.tasks.testing.logging.TestLogEvent
 val jvmBytecodeVersion = "1.8"
 
 val jmhVersion = "1.23"
-val jupiterVersion = "5.6.2"
 val kotestVersion = "4.0.6"
 
 plugins {
@@ -28,9 +27,7 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:$jupiterVersion")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:$jupiterVersion")
-
+    // Testing
     testImplementation("io.kotest:kotest-runner-junit5-jvm:$kotestVersion")
     testImplementation("io.kotest:kotest-assertions-core-jvm:$kotestVersion")
     testImplementation("io.kotest:kotest-property-jvm:$kotestVersion")

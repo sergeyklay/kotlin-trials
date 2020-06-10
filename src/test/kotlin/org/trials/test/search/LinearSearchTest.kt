@@ -1,37 +1,31 @@
 package org.trials.test.search
 
-import org.junit.jupiter.api.Assertions.*
-import org.junit.jupiter.api.Test
+import io.kotest.core.spec.style.ShouldSpec
+import io.kotest.matchers.shouldBe
 import org.trials.search.LinearSearch
 
-class LinearSearchTest {
-    @Test
-    fun `should find element`() {
-        val searcher: LinearSearch<Int> = LinearSearch()
-        val collection = (1..100).toList().toTypedArray()
+class LinearSearchTest: ShouldSpec({
+    val searcher: LinearSearch<Int> = LinearSearch()
+    val collection = (1..100).toList().toTypedArray()
 
-        assertTrue(searcher.search(collection, 1))
-        assertTrue(searcher.search(collection, 7))
-        assertTrue(searcher.search(collection, 42))
-        assertTrue(searcher.search(collection, 100))
+    should("find element in the collection") {
+        searcher.search(collection, 1) shouldBe true
+        searcher.search(collection, 7) shouldBe true
+        searcher.search(collection, 42) shouldBe true
+        searcher.search(collection, 100) shouldBe true
     }
 
-    @Test
-    fun `should not find element in empty array`() {
-        val searcher: LinearSearch<Int> = LinearSearch()
-        val collection = arrayOf<Int>()
+    should("no find elements in an empty collection") {
+        val emptyCollection = arrayOf<Int>()
 
-        assertFalse(searcher.search(collection, 0))
-        assertFalse(searcher.search(collection, 100))
+        searcher.search(emptyCollection, 0) shouldBe false
+        searcher.search(emptyCollection, 100) shouldBe false
+        searcher.search(emptyCollection, -100) shouldBe false
     }
 
-    @Test
-    fun `should not find element`() {
-        val searcher: LinearSearch<Int> = LinearSearch()
-        val collection = (1..100).toList().toTypedArray()
-
-        assertFalse(searcher.search(collection, 0))
-        assertFalse(searcher.search(collection, 300))
-        assertFalse(searcher.search(collection, -10000))
+    should("should not find an element in the collection if it isn't there") {
+        searcher.search(collection, 0) shouldBe false
+        searcher.search(collection, 300) shouldBe false
+        searcher.search(collection, -10000) shouldBe false
     }
-}
+})
