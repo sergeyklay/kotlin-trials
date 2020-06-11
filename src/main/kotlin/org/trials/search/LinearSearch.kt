@@ -7,14 +7,14 @@ package org.trials.search
  *
  * The time complexity is O(n).
  */
-class LinearSearch<T> {
-    fun search(collection: Array<T>, t: T): Boolean {
+class LinearSearch<T> : SearchInterface<T> {
+    override fun search(collection: Array<T>, target: T): Boolean {
         if (collection.isEmpty()) {
             return false
         }
 
         for (item: T in collection) {
-            if (item == t) {
+            if (item == target) {
                 return true
             }
         }

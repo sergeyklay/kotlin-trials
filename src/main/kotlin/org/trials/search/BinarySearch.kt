@@ -7,8 +7,8 @@ package org.trials.search
  *
  * The time complexity is O(log n).
  */
-class BinarySearch<T : Comparable<T>> {
-    fun search(collection: Array<T>, target: T): Boolean {
+class BinarySearch<T : Comparable<T>> : SearchInterface<T> {
+    override fun search(collection: Array<T>, target: T): Boolean {
         if (collection.isEmpty()) {
             return false
         }

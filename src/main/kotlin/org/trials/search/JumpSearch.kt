@@ -11,8 +11,8 @@ import kotlin.math.min
  *
  * The time complexity is O(√n).
  */
-class JumpSearch<T : Comparable<T>> {
-    fun search(collection: Array<T>, target: T): Boolean {
+class JumpSearch<T : Comparable<T>> : SearchInterface<T> {
+    override fun search(collection: Array<T>, target: T): Boolean {
         if (collection.isEmpty()) {
             return false
         }
