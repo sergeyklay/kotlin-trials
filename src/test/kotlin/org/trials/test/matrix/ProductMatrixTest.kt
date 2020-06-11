@@ -12,7 +12,7 @@ class ProductMatrixTest : ShouldSpec({
     val matrix = IntMatrix()
 
     should("product matrices") {
-        val actual = matrix.product1(
+        val actual = matrix.product(
             listOf(
                 listOf(2, 4, 6),
                 listOf(1, 3, 5)
@@ -30,8 +30,27 @@ class ProductMatrixTest : ShouldSpec({
         actual[1] shouldContainExactly listOf(35, 44)
     }
 
+    should("get zero matrix by product of the matrix by the zero matrix") {
+        val actual = matrix.product(
+            listOf(
+                listOf(0, 0, 0),
+                listOf(0, 0, 0)
+            ),
+            listOf(
+                listOf(1, 2),
+                listOf(3, 4),
+                listOf(5, 6)
+            )
+        )
+
+        actual.size shouldBeEqualComparingTo 2
+
+        actual[0] shouldContainExactly listOf(0, 0)
+        actual[1] shouldContainExactly listOf(0, 0)
+    }
+
     should("product two vectors") {
-        val actual = matrix.product1(
+        val actual = matrix.product(
             listOf(
                 listOf(4),
                 listOf(5),
@@ -51,7 +70,7 @@ class ProductMatrixTest : ShouldSpec({
 
     should("throw an exception when calling product on empty matrices") {
         val exception1 = shouldThrow<RuntimeException> {
-            matrix.product1(
+            matrix.product(
                 listOf(
                     listOf(3, 0, -3),
                     listOf(2, -1)
@@ -63,7 +82,7 @@ class ProductMatrixTest : ShouldSpec({
         exception1.message should startWith("To perform a dot product both matrices should not be empty")
 
         val exception2 = shouldThrow<RuntimeException> {
-            matrix.product1(
+            matrix.product(
                 emptyList(),
                 listOf(
                     listOf(3, 0, -3),
@@ -77,7 +96,7 @@ class ProductMatrixTest : ShouldSpec({
 
     should("throw an exception when calling product on matrices with invalid dimension") {
         val exception = shouldThrow<RuntimeException> {
-            matrix.product1(
+            matrix.product(
                 listOf(
                     listOf(3, 0, -3),
                     listOf(2, -1)

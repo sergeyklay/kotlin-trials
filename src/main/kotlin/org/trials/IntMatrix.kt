@@ -46,27 +46,18 @@ class IntMatrix() {
      * Note: To perform a dot product both matrices should not be empty.
      * Note: The number of columns of the 1st matrix must be equal to the number
      *       of rows of the 2nd matrix.
+     *
+     * **See Also:** [Matrix Multiplication](http://matrixmultiplication.xyz)
      */
-    fun product1(c1: List<List<Int>>, c2: List<List<Int>>): List<List<Int>> {
-        if (c1.isEmpty() || c2.isEmpty()) {
-            throw RuntimeException("To perform a dot product both matrices should not be empty")
-        }
-
-        if (c1[0].size != c2.size) {
-            throw RuntimeException(
-                "The number of columns of the 1st matrix must be equal to the number of rows of the 2nd matrix"
-            )
-        }
+    fun product(c1: List<List<Int>>, c2: List<List<Int>>): List<List<Int>> {
+        assetAbleToProduct(c1, c2)
 
         val response = zeroOf(c1.size, c2[0].size)
-        if (isZero(c1) || isZero(c2)) {
-            return response
-        }
-
-        val x = transpose(c2)
-        for (r in c1.indices) {
-            for (c in x.indices) {
-                response[r][c] = c1[r].mapIndexed { r1k, r1v -> r1v * x[c][r1k] }.sum()
+        for (i in c1.indices) {
+            for (j in c2[0].indices) {
+                for (k in c2.indices) {
+                    response[i][j] += c1[i][k] * c2[k][j]
+                }
             }
         }
 
@@ -130,7 +121,22 @@ class IntMatrix() {
      */
     private fun assertSameDimension(c1: List<List<Int>>, c2: List<List<Int>>) {
         if (c1.map { it.size } != c2.map { it.size }) {
-            throw RuntimeException("Dimension of matrices is not equivalent")
+            throw UnsupportedOperationException("Dimension of matrices is not equivalent")
+        }
+    }
+
+    /**
+     * Asserts that matrices do not violate the principles of multiplication.
+     */
+    private fun assetAbleToProduct(c1: List<List<Int>>, c2: List<List<Int>>) {
+        if (c1.isEmpty() || c2.isEmpty()) {
+            throw UnsupportedOperationException("To perform a dot product both matrices should not be empty")
+        }
+
+        if (c1[0].size != c2.size) {
+            throw UnsupportedOperationException(
+                "The number of columns of the 1st matrix must be equal to the number of rows of the 2nd matrix"
+            )
         }
     }
 }
